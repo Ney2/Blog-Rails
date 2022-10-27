@@ -19,7 +19,7 @@
   4. This will open the project in the browser
  That's it! You can play with it as you wish 😄
 
-### Authors
+### Author
 
 👤 Kidist Dinku
 
