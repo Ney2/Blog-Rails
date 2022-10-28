@@ -1,13 +1,13 @@
 class Post < ApplicationRecord
   belongs_to :author, class_name: 'User'
-  has_many :comments, foreign_key: 'author_id'
-  has_many :likes, foreign_key: 'author_id'
+  has_many :comments
+  has_many :likes
 
-  def comments_counter
-    comments.count
+  def update_post_counter
+    author.update(PostsCounter: author.posts.count)
   end
 
-  def recent_updates
-    comments.last(5)
+  def latest_five_comments
+    comments.includes(:post).order(created_at: :desc).limit(5)
   end
 end
