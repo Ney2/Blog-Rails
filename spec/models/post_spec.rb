@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe 'Validations' do
     author = User.create(name: 'Kidist', photo: 'https://unsplash.com/photos', bio: 'Hello! My name is Kidist',
-                         posts_counter: 0)
+                         post_counter: 0)
     subject do
-      Post.new(title: 'This is first post', text: 'Hello! My name is King Josaphat.', author:, comments_counter: 2,
+      Post.new(title: 'This is first post', text: 'Hello! My name is Kidist', author:, comments_counter: 2,
                likes_counter: 2)
     end
 
@@ -28,7 +28,7 @@ RSpec.describe Post, type: :model do
 
     describe 'Should test methods in post model' do
       it 'Post should have five recent comments' do
-        expect(subject.recent_comment).to eq(subject.comments.last(5))
+        expect(subject.latest_five_comments).to eq(subject.comments.last(5))
       end
     end
   end
