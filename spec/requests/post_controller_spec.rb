@@ -15,10 +15,6 @@ RSpec.describe 'Posts', type: :request do
     it 'should have a succesfull connection' do
       expect(response).to have_http_status(:ok)
     end
-
-    it ' should return place holder' do
-      expect(response.body).to include('Post by the user')
-    end
   end
 end
 
@@ -38,10 +34,6 @@ RSpec.describe PostsController, type: :request do
 
     it 'should have a succesfull connection' do
       expect(response).to have_http_status(:ok)
-    end
-
-    it ' should return place holder' do
-      expect(response.body).to include('Post description made by the user')
     end
   end
 end
