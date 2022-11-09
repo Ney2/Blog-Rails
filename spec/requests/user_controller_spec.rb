@@ -13,10 +13,6 @@ RSpec.describe UsersController, type: :request do
     it 'should have a succesfull connection' do
       expect(response).to have_http_status(:ok)
     end
-
-    it ' should return place holder' do
-      expect(response.body).to include('This is for users List')
-    end
   end
 end
 
@@ -34,10 +30,6 @@ RSpec.describe UsersController, type: :request do
 
     it 'should have a succesfull connection' do
       expect(response).to have_http_status(:ok)
-    end
-
-    it ' should return place holder' do
-      expect(response.body).to include('About user')
     end
   end
 end
