@@ -6,7 +6,7 @@ RSpec.describe User, type: :feature do
       @user = User.create(
         name: 'Tom',
         photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
-        bio: 'Teacher from Mexico.',
+        bio: 'Teacher from Poland.',
         post_counter: 0
       )
       Post.create(

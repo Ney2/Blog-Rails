@@ -9,17 +9,11 @@ RSpec.describe Post, type: :feature do
         bio: 'Teacher from Mexico.',
         post_counter: 0
       )
-      @post1 = Post.create(
-        id: rand(1000),
-        author_id: @user,
-        title: 'Hello',
-        text: 'This is my first post',
-        comments_counter: 0,
-        likes_counter: 0
-      )
+      @post1 = Post.create(title: 'Post', text: 'This is my first post', comments_counter: 0, likes_counter: 0,
+                           author_id: @user)
       Comment.create(author_id: @user, post: @post1, text: 'This is my first comment')
       @user = User.all
-      visit user_posts_path(@user.ids)
+      visit(user_posts_path(@user.ids))
     end
 
     it 'should see the username of all other users' do
@@ -42,12 +36,24 @@ RSpec.describe Post, type: :feature do
       expect(page).to have_content(@post1.comments.first)
     end
 
+    it 'should display post body.' do
+      expect(page).to have_content('List of user posts')
+    end
+
     it 'I can see how many comments a post has.' do
       expect(page).to have_content(@post1.comments_counter)
     end
 
     it 'I can see how many likes a post has.' do
       expect(page).to have_content(@post1.likes_counter)
+    end
+
+    it "should display post's title." do
+      expect(page).to have_content('List of user posts')
+    end
+
+    it 'should have a pagination button' do
+      expect(page).to have_selector(:link_or_button, 'pagination')
     end
   end
 end
