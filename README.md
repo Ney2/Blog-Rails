@@ -19,7 +19,7 @@
   4. This will open the project in the browser
  That's it! You can play with it as you wish 😄
 
-### Author
+### Authors
 
 # 👤 Kidist Dinku
 
@@ -28,7 +28,7 @@
 - Linkedin: [Kidist Dinku](https://www.linkedin.com/in/kidist-guta/)
 
 
-Abdollah Raafat
+# 👤 Abdollah Raafat
 - GitHub: [AbdollahRaafat](https://github.com/AbdollahRaafat)
 - LinkedIn: [AbdollahRaafat](https://www.linkedin.com/in/abdollah-raafat-886059221/)
 - Twitter: [AbdollahRaafat](https://twitter.com/abdollah_raafat)
