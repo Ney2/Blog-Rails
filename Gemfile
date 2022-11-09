@@ -55,8 +55,8 @@ gem 'bootsnap', require: false
 group :development, :test do
   gem 'capybara'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'database_cleaner'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem "database_cleaner"
 end
 
 group :development do
