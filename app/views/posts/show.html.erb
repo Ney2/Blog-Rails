@@ -1,17 +1,23 @@
 <section>
-      <div class= "container">
-        <div class="details">
-          <h1 class="user-head"><%= @post.title %></h1>
-          <p>Post Description: <span><%= @post.text%></span> </p>
-          <p class="user-para">Number of comments: <%= @post.comments_counter || 0 %></p>
-          <p class="user-para">Number of likes: <%= @post.likes_counter || 0 %></p>
+      <div class= "posts-container">
+
+        <h1 class="post"><%= @post.title %></h1>
+        <div class="posts">
+          <span class="posts-comment">Number of comments: <%= @post.comments_counter || 0 %></span>
+          <span class="posts-likes">Number of likes: <%= @post.likes_counter || 0 %></span>
         </div>
+            <p>post description: <span><%= @post.text%></span> </p>
       </div>
       <div class="recent-comments">
       <ul>
-      <% @post.latest_five_comments.each do |rec| %>
-      <li>comments:<%= rec.text %></li>
+      <% @post.recent_comments.each do |comment| %>
+      <li>comments:<%= comment.text %></li>
+      <%=button_to "del", user_post_comments_path(@comments), method: :delete  %>
        <% end %>
+       <%= link_to new_user_post_comment_path do %>Add comment<% end %>
+       <%= form_with url: "/users/#{@post.author_id}/posts/#{@post.id}/likes", scope: :like do |f| %>
+  <%= f.submit " Add Like" %>
+  <% end %>
       </ul>
       </div>
 </section>
