@@ -1,31 +1,40 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
-    @posts = Post.includes(comments: [:author]).where(posts: { author_id: @user.id })
+    @posts = Post.includes(comments: [:author]).where(posts: { author_id: params[:user_id] })
   end
 
   def show
-    @post = Post.find(params[:id])
+    @user = User.find(params[:user_id])
+    @post = Post.includes(comments: [:author]).where(posts: { id: params[:id] })[0]
+    @comment = Comment.new
+    @like = Like.new
   end
 
   def new
     @post = Post.new
+    @current_user = current_user
   end
 
   def create
-    new_post = current_user.posts.new(post_params)
-    new_post.likes_counter = 0
-    new_post.comments_counter = 0
+    @user = current_user
+    @post = Post.new(params.require(:form_post).permit(:title, :text))
+    @post.author = @user
 
-    respond_to do |format|
-      format.html do
-        if new_post.save
-          redirect_to "/users/#{new_post.author_id}/posts/", notice: 'Post was successfully created.'
-        else
-          render :new, status: 'Error occured will creating post!'
-        end
-      end
+    if @post.save
+      flash[:success] = 'Question saved successfully'
+      redirect_to user_post_path(@user, @post)
+    else
+      flash.now[:error] = 'Error: Question could not be saved'
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.author.decrement!(:posts_counter)
+    Post.delete(params[:id])
   end
 
   private
