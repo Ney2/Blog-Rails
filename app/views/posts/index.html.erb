@@ -18,6 +18,8 @@
           <h1 class="user-head"><%= post.title %></h1>
           <p>post description: <span><%= post.text%></span> </p>
           <p class="user-para">Number of comments: <%= post.comments_counter || 0 %></p>
+          <%  if can? :destroy, comments %>
+          <%= button_to 'delete comments', "/users/#{@user.id}/comments/#{comments.id}", method: :delete%>
           <p class="user-para">Number of likes: <%= post.likes_counter || 0 %></p>
         </div>
    </div>
