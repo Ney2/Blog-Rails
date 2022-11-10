@@ -22,7 +22,7 @@
         </div>
    </div>
     <ul>
-      <% post.recent_comment.each do |rec| %>
+      <% post.latest_five_comments.each do |rec| %>
       <li><%= rec.author.name %>:<%= rec.text %></li>
        <% end %>
     </ul>
