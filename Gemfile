@@ -26,6 +26,9 @@ gem 'turbo-rails'
 # Add devise
 gem 'devise'
 
+# Add api
+gem 'jwt'
+
 # Add cancancan
 gem 'cancancan'
 
